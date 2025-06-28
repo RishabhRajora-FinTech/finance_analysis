@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+streamlit = "==1.25.0"
+pandas = "==1.5.3"
+yfinance = "==0.2.30"
+matplotlib = "==3.7.2"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
