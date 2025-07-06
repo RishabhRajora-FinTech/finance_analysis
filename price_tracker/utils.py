@@ -66,3 +66,27 @@ def simulate_sip(data, monthly_amount):
 
     df = pd.DataFrame(results, columns=["Date", "Invested", "Value"]).set_index("Date")
     return df
+
+def standard_deviation_of_returns(df):
+    """
+    Calculate the standard deviation of the portfolio returns.
+    """
+    if df.empty:
+        return 0.0
+    price_series = df.dropna()
+    price_series = price_series.iloc[:, 0]
+
+    returns = price_series.pct_change().dropna()
+    return ((returns.std() * (252 ** 0.5))*100)  # Annualized standard deviation
+
+def mean_of_returns(df):
+    """
+    Calculate the mean of the portfolio returns.
+    """
+    if df.empty:
+        return 0.0
+    price_series = df.dropna()
+    price_series = price_series.iloc[:, 0]
+
+    returns = price_series.pct_change().dropna()
+    return ((returns.mean() * 252 )* 100) # Annualized mean return

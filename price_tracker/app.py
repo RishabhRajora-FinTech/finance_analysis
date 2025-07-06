@@ -1,5 +1,5 @@
 import streamlit as st
-from utils import get_stock_data, simulate_lumpsum, simulate_sip, get_stock_info
+from utils import get_stock_data, simulate_lumpsum, simulate_sip, get_stock_info, standard_deviation_of_returns, mean_of_returns
 import plotly.graph_objects as go
 from datetime import date
 import pandas as pd
@@ -31,6 +31,12 @@ if start_date and end_date:
 # --- Main Logic ---
 if st.button("Track"):
     data = get_stock_data(ticker, start_date, end_date)
+    # --- Display Inputs ---
+    st.subheader("🔍 Investment Details")
+    st.write(f"**Ticker:** {ticker.upper()}")
+    st.write(f'**Annualized Return:** {mean_of_returns(data):.2f}%')
+    st.write(f"**Standard Deviation of Returns:** {standard_deviation_of_returns(data):.2f}%")
+
 
     if data.empty:
         st.error("❌ No data found for the given ticker or date range.")
