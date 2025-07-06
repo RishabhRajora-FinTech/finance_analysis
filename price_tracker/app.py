@@ -1,9 +1,10 @@
 import streamlit as st
-from utils import get_stock_data, simulate_lumpsum, simulate_sip
+from utils import get_stock_data, simulate_lumpsum, simulate_sip, get_stock_info
 import plotly.graph_objects as go
 from datetime import date
 import pandas as pd
-from invest_style import InvestStyle
+
+from dateutil.relativedelta import relativedelta
 
 st.set_page_config(page_title="📈 Share Price Tracker", layout="wide")
 
@@ -11,6 +12,7 @@ st.title("📈 Share Price Investment Tracker (Lump Sum vs SIP)")
 
 # --- User Inputs ---
 ticker = st.text_input("Enter Stock Symbol (e.g., TCS.NS, INFY.NS, AAPL)", "TCS.NS")
+st.write("Name of the Company:",get_stock_info(ticker))
 start_date = st.date_input("Start Date", date(2015, 1, 1))
 end_date = st.date_input("End Date", date.today())
 
@@ -20,6 +22,11 @@ amount = st.number_input(
     min_value=100.0,
     value=100000.0 if invest_type == "Lump Sum" else 5000.0
 )
+# Calculate duration in months and years
+if start_date and end_date:
+    duration = relativedelta(end_date, start_date)
+    duration_months = duration.months + duration.years * 12
+    st.write(f"Duration: {duration.years} years and {duration.months} months ({duration_months} months total)")
 
 # --- Main Logic ---
 if st.button("Track"):

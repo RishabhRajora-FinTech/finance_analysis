@@ -5,6 +5,17 @@ def get_stock_data(ticker, start, end):
     data = yf.download(ticker, start=start, end=end)
     return data["Close"].dropna()
 
+def get_stock_info(ticker):
+
+    try:
+        stock_info = yf.Ticker(ticker).info
+        stock_name = stock_info.get("longName", "")
+    except:
+        stock_name = ""
+
+    return stock_name
+
+
 import pandas as pd
 def simulate_lumpsum(data, amount):
     import pandas as pd
