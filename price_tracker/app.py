@@ -10,11 +10,15 @@ if "current_page" not in st.session_state:
 
 # Optional: Sidebar widgets (you can add filters or tickers here)
 with st.sidebar:
-#     st.title("🔍 Portfolio Builder")
-#     st.selectbox("Search tickers", options=["TCS.NS", "INFY.NS", "AAPL"])
-#     st.date_input("Start Date", key="start_date")
-#     st.date_input("End Date", key="end_date")
+    # 🔷 Logo and Creator Info
+    st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+    st.image("logo.png", width=120)
+    st.markdown("**Created by ❤️ Rishabh Rajora**", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
     st.markdown("---")
+
+    # 🧭 Navigation Buttons
     if st.button("🏠 Home", key="sidebar_home"):
         st.session_state.current_page = "Home"
     if st.button("📈 Lump Sum & SIP", key="sidebar_lump"):
@@ -23,6 +27,7 @@ with st.sidebar:
         st.session_state.current_page = "Portfolio Analysis"
     if st.button("ℹ️ About", key="sidebar_about"):
         st.session_state.current_page = "About"
+
 # Render the selected page
 PAGES = {
     "Home": home,
