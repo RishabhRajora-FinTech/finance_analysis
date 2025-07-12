@@ -25,7 +25,7 @@ st.metric("Annualized Return (CAGR)", f"{cagr:.2f}%")
 st.metric("Investment Duration", f"{len(df.index)} days")
 
 # Plot (using Plotly)
-plotter = PlotBuilder(df, ticker, start_year)
+plotter = PlotBuilder(df, ticker, start_year, name)
 fig = plotter.create_plot()
 st.plotly_chart(fig, use_container_width=True)
 

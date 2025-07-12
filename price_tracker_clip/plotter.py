@@ -3,10 +3,11 @@ from io import BytesIO
 import pandas as pd
 
 class PlotBuilder:
-    def __init__(self, df: pd.DataFrame, ticker: str, start_year: int):
+    def __init__(self, df: pd.DataFrame, ticker: str, start_year: int, name: str = None):
         self.df = df
         self.ticker = ticker
         self.start_year = start_year
+        self.tikcer_name = name
 
     def create_plot(self):
         fig = go.Figure()
@@ -87,7 +88,7 @@ class PlotBuilder:
 
         # Layout styling
         fig.update_layout(
-            title=f" ₹1/day in {self.ticker} since {start_date.strftime("%d/%m/%Y")} (AVALIABLE DATA) input {self.start_year}",
+            title=f" ₹1/day in {self.tikcer_name} ticker {self.ticker} since {start_date.strftime("%d/%m/%Y")} (AVAL. DATA) input {self.start_year}",
             xaxis=dict(
                 title="Date",
                 tickfont=dict(size=12)
