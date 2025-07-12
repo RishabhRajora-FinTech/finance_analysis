@@ -40,7 +40,7 @@ class PlotBuilder:
         fig.add_annotation(
             x=final_date,
             y=final_portfolio,
-            text=f"${final_portfolio:,.0f}",
+            text=f"₹{final_portfolio:,.0f}",
             showarrow=True,
             arrowhead=1,
             ax=-80,
@@ -53,7 +53,7 @@ class PlotBuilder:
 
             x=self.df.index[-1],
             y=final_portfolio,
-            text=f"<b>${final_portfolio:,.0f}</b>",
+            text=f"<b>₹{final_portfolio:,.0f}</b>",
             showarrow=True,
             arrowhead=2,
             ax=-80,
@@ -95,7 +95,7 @@ class PlotBuilder:
             ),
             yaxis=dict(
                 title=dict(
-                    text="USD",
+                    text="INR",
                     font=dict(size=14)
                 ),
                 tickfont=dict(size=12)
