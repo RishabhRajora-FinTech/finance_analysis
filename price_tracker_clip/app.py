@@ -29,9 +29,16 @@ plotter = PlotBuilder(df, ticker, start_year)
 fig = plotter.create_plot()
 st.plotly_chart(fig, use_container_width=True)
 
-# Download (still works via PNG with Plotly)
-st.download_button("📥 Download Chart", data=plotter.get_image_bytes(),
-                   file_name="investment_chart.png", mime="image/png")
+# # Download (still works via PNG with Plotly)
+# st.download_button("📥 Download Chart", data=plotter.get_image_bytes(),
+#                    file_name="investment_chart.png", mime="image/png")
+
+st.download_button(
+    "📥 Download Interactive Chart (HTML)",
+    data=fig.to_html(),
+    file_name="chart.html",
+    mime="text/html"
+)
 
 st.markdown("---")
 st.caption("Built with Python OOP & Streamlit 🐍")
