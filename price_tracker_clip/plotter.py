@@ -70,7 +70,7 @@ class PlotBuilder:
         fig.add_annotation(
             x=self.df.index[-1],
             y=final_invested,
-            text=f"<b>${final_invested:,.0f}</b>",
+            text=f"<b>₹{final_invested:,.0f}</b>",
             showarrow=True,
             arrowhead=2,
             ax=-80,
