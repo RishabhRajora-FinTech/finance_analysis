@@ -6,6 +6,9 @@ st.set_page_config(page_title="📈  ₹1/day Investment", layout="centered")
 st.title("💵 ₹ 1 a Day Investment Simulator")
 
 # Sidebar Inputs
+st.sidebar.markdown("**Everything FinTech**", unsafe_allow_html=True)
+st.sidebar.markdown("**Created by ❤️ Rishabh Rajora**", unsafe_allow_html=True)
+
 st.sidebar.header("Settings")
 ticker = st.sidebar.text_input("Ticker Symbol", value="^NSEI", help="Enter the stock ticker symbol (e.g., 'NSE:IDEA' or 'NASDAQ:AAPL').")
 start_year = st.sidebar.slider("Start Year", min_value=1990, max_value=2025, value=1995)
