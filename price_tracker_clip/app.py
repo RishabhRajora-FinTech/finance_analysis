@@ -7,7 +7,7 @@ st.title("💵 ₹ 1 a Day Investment Simulator")
 
 # Sidebar Inputs
 st.sidebar.header("Settings")
-ticker = st.sidebar.text_input("Ticker Symbol", value="^NSEI")
+ticker = st.sidebar.text_input("Ticker Symbol", value="IDEX.NS", help="Enter the stock ticker symbol (e.g., 'NSE:IDEA' or 'NASDAQ:AAPL').")
 start_year = st.sidebar.slider("Start Year", min_value=1990, max_value=2025, value=1995)
 
 
