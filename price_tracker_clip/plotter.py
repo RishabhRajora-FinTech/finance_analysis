@@ -88,7 +88,7 @@ class PlotBuilder:
 
         # Layout styling
         fig.update_layout(
-            title=f" ₹1/day in {self.tikcer_name} ticker {self.ticker} since {start_date.strftime("%d/%m/%Y")} (AVAL. DATA) input {self.start_year}",
+            title=f" ₹1/day in {self.tikcer_name} ticker {self.ticker} since {start_date.strftime("%d/%m/%Y")} (AVAL. DATA) range from {self.start_year} & Investment Duration {len(self.df.index)} days",
             xaxis=dict(
                 title="Date",
                 tickfont=dict(size=12)
