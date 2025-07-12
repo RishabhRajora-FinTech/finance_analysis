@@ -16,6 +16,17 @@ class InvestmentSimulator:
         df = df.resample('D').ffill()
         self.data = df
         return df
+    
+    def get_stock_info(self):
+
+        try:
+            stock_info = yf.Ticker(self.ticker).info
+            stock_name = stock_info.get("longName", "")
+        except:
+            stock_name = ""
+
+        return stock_name
+
 
     def simulate(self):
         # Step 1: Fetch if not already available
