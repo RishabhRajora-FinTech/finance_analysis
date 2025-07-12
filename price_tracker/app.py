@@ -11,8 +11,7 @@ if "current_page" not in st.session_state:
 # Optional: Sidebar widgets (you can add filters or tickers here)
 with st.sidebar:
     # 🔷 Logo and Creator Info
-    st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
-    st.image("logo.png", width=120)
+    st.markdown("**Everything FinTech**", unsafe_allow_html=True)
     st.markdown("**Created by ❤️ Rishabh Rajora**", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
