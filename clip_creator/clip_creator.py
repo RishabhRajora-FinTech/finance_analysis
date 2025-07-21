@@ -78,7 +78,7 @@ def create_video(folder='frames', output='investment_growth_reel.mp4', fps=10):
 
 # --- Main Runner ---
 if __name__ == "__main__":
-    TICKER = "INFY.NS"
+    TICKER = "TCS.NS"
     START_DATE = "2023-01-01"
     END_DATE = "2024-01-31"
     FREQ = "W"

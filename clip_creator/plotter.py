@@ -1,4 +1,5 @@
 import plotly.graph_objects as go
+import numpy as np
 
 class PlotBuilder:
     def __init__(self, df, ticker, start_year, name=""):
@@ -6,14 +7,12 @@ class PlotBuilder:
         self.ticker = ticker
         self.start_year = start_year
         self.name = name or ticker
-
-        # Format x-axis labels as string
         self.df['Formatted_Date'] = self.df.index.strftime('%d-%m-%Y')
 
     def create_plot(self):
         fig = go.Figure()
 
-        # --- SIP Plot ---
+        # Add SIP trace
         fig.add_trace(go.Scatter(
             x=self.df['Formatted_Date'],
             y=self.df['Value_SIP'],
@@ -22,7 +21,7 @@ class PlotBuilder:
             line=dict(color='dodgerblue', width=4)
         ))
 
-        # --- Lump Sum Plot ---
+        # Add Lump Sum trace
         fig.add_trace(go.Scatter(
             x=self.df['Formatted_Date'],
             y=self.df['Value_Lump'],
@@ -31,7 +30,7 @@ class PlotBuilder:
             line=dict(color='tomato', width=4, dash='dot')
         ))
 
-        # --- Final Value Annotations ---
+        # Final value annotations
         if len(self.df) > 0:
             final_date = self.df['Formatted_Date'].iloc[-1]
             sip_val = self.df['Value_SIP'].iloc[-1]
@@ -40,7 +39,8 @@ class PlotBuilder:
             fig.add_annotation(
                 text=f"SIP: ₹{sip_val:,.0f}",
                 x=final_date, y=sip_val,
-                showarrow=True, arrowhead=1,
+                showarrow=True,
+                arrowhead=1,
                 font=dict(size=18, color="dodgerblue"),
                 ax=0, ay=-40
             )
@@ -48,25 +48,32 @@ class PlotBuilder:
             fig.add_annotation(
                 text=f"Lump Sum: ₹{lump_val:,.0f}",
                 x=final_date, y=lump_val,
-                showarrow=True, arrowhead=1,
+                showarrow=True,
+                arrowhead=1,
                 font=dict(size=18, color="tomato"),
                 ax=0, ay=40
             )
 
-        # --- Layout & Axis ---
+        # Determine spacing of x-ticks
+        total_points = len(self.df)
+        tick_every = max(1, total_points // 6)  # Show max 6 labels
+        tickvals = self.df['Formatted_Date'].iloc[::tick_every].tolist()
+
+        # Layout
         fig.update_layout(
             title=dict(
                 text=f"📊 {self.name}<br>Lump Sum vs SIP",
                 x=0.5, xanchor='center',
-                font=dict(size=36)
+                font=dict(size=18)
             ),
             xaxis_title="Date",
             yaxis_title="Portfolio Value (₹)",
-            font=dict(size=22),
+            font=dict(size=12),
             template="plotly_dark",
             legend=dict(
                 orientation='h',
-                x=0.5, y=-0.2,
+                x=0.5,
+                y=-0.2,
                 xanchor='center'
             ),
             margin=dict(t=120, b=100, l=40, r=40)
@@ -75,8 +82,8 @@ class PlotBuilder:
         fig.update_xaxes(
             type="category",
             tickangle=-45,
-            tickvals=self.df['Formatted_Date'],
-            ticktext=self.df['Formatted_Date']
+            tickvals=tickvals,
+            ticktext=tickvals
         )
 
         return fig
