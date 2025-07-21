@@ -65,7 +65,7 @@ class PlotBuilder:
             height=1920,  # ✅ Instagram Reel height
             title=dict(
                 text=f"📊 {self.name}<br>Lump Sum vs SIP",
-                x=0.5, xanchor='center',
+                x=0.1, xanchor='left',
                 font=dict(size=36)  # Enlarged for portrait
             ),
             xaxis_title="Date",

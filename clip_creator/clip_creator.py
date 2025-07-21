@@ -20,7 +20,7 @@ def get_stock_info(ticker):
 
 
 # --- Fetch Stock Data ---
-def fetch_data(ticker, start="2023-01-01", end="2023-12-31", freq='M'):
+def fetch_data(ticker, start="2024-01-01", end="2024-1-31", freq='W'):
     df = yf.download(ticker, start=start, end=end)[['Close']]
     df = df.resample(freq).first().dropna()
     if isinstance(df.index, pd.PeriodIndex):
@@ -79,9 +79,9 @@ def create_video(folder='frames', output='investment_growth_reel.mp4', fps=10):
 
 # --- Main Runner ---
 if __name__ == "__main__":
-    TICKER = "^NSEI"
+    TICKER = "IDEA.NS"
     START_DATE = "2020-01-01"
-    END_DATE = "2025-07-01"
+    END_DATE = "2025-01-31"
     FREQ = "M"
     LUMP_SUM = 100000
     
