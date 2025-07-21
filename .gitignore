@@ -2,3 +2,7 @@ __pycache__/
 */venv
 */venv_fin
 */venv311
+*.mp4
+*.png
+*.jpg
+*.jpeg
