@@ -41,7 +41,7 @@ class PlotBuilder:
                 x=final_date, y=sip_val,
                 showarrow=True,
                 arrowhead=1,
-                font=dict(size=18, color="dodgerblue"),
+                font=dict(size=36, color="dodgerblue"),
                 ax=0, ay=-40
             )
 
@@ -50,7 +50,7 @@ class PlotBuilder:
                 x=final_date, y=lump_val,
                 showarrow=True,
                 arrowhead=1,
-                font=dict(size=18, color="tomato"),
+                font=dict(size=36, color="tomato"),
                 ax=0, ay=40
             )
 
@@ -61,22 +61,25 @@ class PlotBuilder:
 
         # Layout
         fig.update_layout(
+            width=1080,  # ✅ Instagram Reel width
+            height=1920,  # ✅ Instagram Reel height
             title=dict(
                 text=f"📊 {self.name}<br>Lump Sum vs SIP",
                 x=0.5, xanchor='center',
-                font=dict(size=18)
+                font=dict(size=36)  # Enlarged for portrait
             ),
             xaxis_title="Date",
             yaxis_title="Portfolio Value (₹)",
-            font=dict(size=12),
+            font=dict(size=24),
             template="plotly_dark",
             legend=dict(
                 orientation='h',
                 x=0.5,
                 y=-0.2,
-                xanchor='center'
+                xanchor='center',
+                font=dict(size=20)
             ),
-            margin=dict(t=120, b=100, l=40, r=40)
+            margin=dict(t=120, b=100, l=60, r=60)
         )
 
         fig.update_xaxes(

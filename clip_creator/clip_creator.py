@@ -63,7 +63,8 @@ def generate_frames(df, stock_name, ticker, start_year, folder='frames'):
         fig.update_layout(width=1080, height=1920)
 
         frame_path = f"{folder}/frame_{i:03d}.png"
-        fig.write_image(frame_path)
+        fig.write_image(frame_path, width=1080, height=1920, scale=1)
+
         print(f"✅ Saved: {frame_path}")
 
 
@@ -78,10 +79,10 @@ def create_video(folder='frames', output='investment_growth_reel.mp4', fps=10):
 
 # --- Main Runner ---
 if __name__ == "__main__":
-    TICKER = "TCS.NS"
-    START_DATE = "2023-01-01"
-    END_DATE = "2024-01-31"
-    FREQ = "W"
+    TICKER = "^NSEI"
+    START_DATE = "2020-01-01"
+    END_DATE = "2025-07-01"
+    FREQ = "M"
     LUMP_SUM = 100000
     
 
