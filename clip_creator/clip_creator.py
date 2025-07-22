@@ -7,8 +7,7 @@ import shutil
 from moviepy import ImageSequenceClip
 # from moviepy.video.fx.resize import resize
 
-from plotter import PlotBuilder  # 🔁 You must define this class separately
-
+from plotter import PlotBuilder  
 
 # --- Get Company Name ---
 def get_stock_info(ticker):
@@ -79,9 +78,9 @@ def create_video(folder='frames', output='investment_growth_reel.mp4', fps=10):
 
 # --- Main Runner ---
 if __name__ == "__main__":
-    TICKER = "IDEA.NS"
+    TICKER = "GENSOL.BO"
     START_DATE = "2020-01-01"
-    END_DATE = "2025-01-31"
+    END_DATE = "2025-07-14"
     FREQ = "M"
     LUMP_SUM = 100000
     
