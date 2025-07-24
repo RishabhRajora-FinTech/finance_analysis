@@ -93,122 +93,196 @@ class PlotBuilder:
 
         return fig
     
+import os
+import shutil
+from io import BytesIO
+
+import numpy as np
+import pandas as pd
+import plotly.graph_objects as go
+import os
+import shutil
+from io import BytesIO
+
+import numpy as np
+import pandas as pd
+import plotly.graph_objects as go
+
 
 class PlotBuilderOneDay:
+    REQUIRED_COLS = ("Portfolio Value", "Total Invested")
+
     def __init__(self, df: pd.DataFrame, ticker: str, start_year: int, name: str = None):
-        self.df = df
+        self.df = df.copy()
         self.ticker = ticker
         self.start_year = start_year
-        self.tikcer_name = name
+        self.ticker_name = name or ticker
 
-    def create_plot(self):
+        # ---- sanity checks ----
+        missing = [c for c in self.REQUIRED_COLS if c not in self.df.columns]
+        if missing:
+            raise ValueError(f"DataFrame is missing required columns: {missing}")
+
+        # ---- ensure datetime index ----
+        self._ensure_datetime_index()
+
+        # ---- clean & order ----
+        self.df.sort_index(inplace=True)
+        self.df = self.df.dropna(subset=list(self.REQUIRED_COLS))
+
+        # ---- add a human‐readable date column ----
+        self.df['Formatted_Date'] = self.df.index.strftime('%d-%m-%Y')
+
+    def _ensure_datetime_index(self):
+        """Make df.index a datetime index, inferring from ints if needed."""
+        idx = self.df.index
+        if pd.api.types.is_datetime64_any_dtype(idx):
+            return
+        if pd.api.types.is_integer_dtype(idx):
+            max_v = int(np.max(idx))
+            unit = (
+                "ns" if max_v > 1e17 else
+                "us" if max_v > 1e14 else
+                "ms" if max_v > 1e12 else
+                "s"
+            )
+            self.df.index = pd.to_datetime(idx, unit=unit)
+        else:
+            self.df.index = pd.to_datetime(idx)
+
+    def create_plot(self) -> go.Figure:
         fig = go.Figure()
+        draw_mode = "lines+markers"
 
-        # Add Portfolio Value Line
+        # Portfolio Value line
         fig.add_trace(go.Scatter(
             x=self.df.index,
-            y=self.df['Portfolio Value'],
-            mode='lines',
-            name='Portfolio Value',
-            line=dict(color='green')
+            y=self.df["Portfolio Value"],
+            customdata=self.df["Formatted_Date"],
+            mode=draw_mode,
+            name="Portfolio Value",
+            line=dict(color="green", width=4),
+            marker=dict(size=8),
+            connectgaps=True,
+            hovertemplate="%{customdata}<br>₹%{y:,.0f}<extra>Portfolio Value</extra>",
         ))
 
-        # Add Total Invested Line
+        # Total Invested line
         fig.add_trace(go.Scatter(
             x=self.df.index,
-            y=self.df['Total Invested'],
-            mode='lines',
-            name='Total Invested',
-            line=dict(color='red')
+            y=self.df["Total Invested"],
+            customdata=self.df["Formatted_Date"],
+            mode=draw_mode,
+            name="Total Invested",
+            line=dict(color="red", width=4, dash="dot"),
+            marker=dict(size=8),
+            connectgaps=True,
+            hovertemplate="%{customdata}<br>₹%{y:,.0f}<extra>Total Invested</extra>",
         ))
+        # ─── lock & relabel the x-axis ─────────────────────────────────────
+            # First ensure 'Formatted_Date' exists and is correctly formatted
+        if "Formatted_Date" not in self.df.columns:
+            self.df["Formatted_Date"] = self.df.index.strftime("%d-%m-%Y")
 
-        # Final values for annotations
-        start_date = self.df.index[0]
-        final_date = self.df.index[-1]
-        final_portfolio = self.df['Portfolio Value'].iloc[-1]
-        final_invested = self.df['Total Invested'].iloc[-1]
+        # Limit number of ticks to avoid clutter (especially on 1080px wide plots)
+        max_ticks = 10
+        step = max(1, len(self.df) // max_ticks)
+        tickvals = self.df.index[::step]
+        ticktext = self.df["Formatted_Date"].iloc[::step]
 
-        # Annotate Portfolio Value
-        fig.add_annotation(
-            x=final_date,
-            y=final_portfolio,
-            text=f"₹{final_portfolio:,.0f}",
-            showarrow=True,
-            arrowhead=1,
-            ax=-80,
-            ay=-40,
-            font=dict(color='green')
+        # Apply to x-axis
+        fig.update_xaxes(
+            tickmode="array",
+            tickvals=tickvals,
+            ticktext=ticktext,
+            tickangle=45,
+            title="Date",
+            showgrid=True,
+            tickfont=dict(size=12)
+        )
+        # PIN Y-AXIS JUST ABOVE MAX
+        ymax = self.df["Portfolio Value"].max() * 1.1
+        fig.update_yaxes(
+            range=[0, ymax],
+            title="INR",
+            showgrid=True,
+            tickfont=dict(size=12),
         )
 
-        # Annotate Total Invested
-        fig.add_annotation(
-
-            x=self.df.index[-1],
-            y=final_portfolio,
-            text=f"<b>₹{final_portfolio:,.0f}</b>",
-            showarrow=True,
-            arrowhead=2,
-            ax=-80,
-            ay=-40,
-            font=dict(color="white"),
-            align="center",
-            bordercolor="green",
-            borderwidth=2,
-            borderpad=4,
-            bgcolor="green",
-            opacity=0.9
-        )
+        # ANNOTATE LAST POINT USING Formatted_Date
+        final_date_disp = self.df["Formatted_Date"].iloc[-1]
+        final_portfolio = float(self.df["Portfolio Value"].iloc[-1])
+        final_invested = float(self.df["Total Invested"].iloc[-1])
 
         fig.add_annotation(
-            x=self.df.index[-1],
-            y=final_invested,
-            text=f"<b>₹{final_invested:,.0f}</b>",
-            showarrow=True,
-            arrowhead=2,
-            ax=-80,
-            ay=40,
-            font=dict(color="white"),
-            align="center",
-            bordercolor="red",
-            borderwidth=2,
-            borderpad=4,
-            bgcolor="red",
-            opacity=0.9
+            x=self.df.index[-1], y=final_portfolio,
+            text=f"{final_date_disp}<br><b>₹{final_portfolio:,.0f}</b>",
+            showarrow=True, arrowhead=2, ax=-70, ay=-40,
+            font=dict(color="white",size = 20), align="center",
+            bordercolor="green", borderwidth=3, borderpad=8,
+            bgcolor="green", opacity=0.95,
+        )
+        fig.add_annotation(
+            x=self.df.index[-1], y=final_invested,
+            text=f"{final_date_disp}<br><b>₹{final_invested:,.0f}</b>",
+            showarrow=True, arrowhead=2, ax=-70, ay=40,
+            font=dict(color="white",size = 20), align="center",
+            
+            bordercolor="red", borderwidth=3, borderpad=8,
+            bgcolor="red", opacity=0.95,
         )
 
-
-
-        # Layout styling
+        # FINAL LAYOUT
+        start_date_str = self.df["Formatted_Date"].iloc[0]
         fig.update_layout(
-            title=f" ₹1/day in {self.tikcer_name} ticker {self.ticker} since {start_date.strftime("%d/%m/%Y")} (AVAL. DATA) range from {self.start_year} & Investment Duration {len(self.df.index)} days",
-            xaxis=dict(
-                title="Date",
-                tickfont=dict(size=12)
+            title=(
+                f"₹100/day in {self.ticker_name} ({self.ticker}) since {start_date_str} "
+                f"(DATA from {self.start_year}) • Duration: {len(self.df)} days"
             ),
-            yaxis=dict(
-                title=dict(
-                    text="INR",
-                    font=dict(size=14)
-                ),
-                tickfont=dict(size=12)
-            ),
-            autosize=False,
-            width=800,
-            height=500,
-            margin=dict(l=50, r=50, b=100, t=100, pad=5),
-            paper_bgcolor='#0E1117',
-            plot_bgcolor='#0E1117',
-            font=dict(color='white'),
-            legend=dict(x=0, y=1.1, orientation="h")
+            autosize=False, width=1080, height=1920,
+            margin=dict(l=50, r=50, b=120, t=120, pad=5),
+            paper_bgcolor="#2c3548", plot_bgcolor="#c1c9d9",
+            font=dict(color="white"), legend=dict(x=0, y=1.1, orientation="h"),
         )
-
 
         return fig
 
-    def get_image_bytes(self):
+    def get_image_bytes(self, fmt: str = "png") -> BytesIO:
         fig = self.create_plot()
         buf = BytesIO()
-        fig.write_image(buf, format="png")
+        fig.write_image(buf, format=fmt)
         buf.seek(0)
         return buf
 
+
+def generate_frames(
+    df: pd.DataFrame,
+    stock_name: str,
+    ticker: str,
+    start_year: int,
+    folder: str = "frames",
+    num_frames: int = 100,
+):
+    if os.path.exists(folder):
+        shutil.rmtree(folder)
+    os.makedirs(folder)
+
+    n = len(df)
+    if n >= num_frames:
+        cut_points = np.linspace(1, n, num=num_frames, dtype=int, endpoint=True)
+    else:
+        cut_points = np.arange(1, n + 1, dtype=int)
+        pad = np.full(num_frames - n, n, dtype=int)
+        cut_points = np.concatenate([cut_points, pad])
+
+    for frame_num, idx in enumerate(cut_points, start=1):
+        df_clip = df.iloc[:idx].copy()
+        plot = PlotBuilderOneDay(df_clip, ticker=ticker, start_year=start_year, name=stock_name)
+        fig = plot.create_plot()
+        fig.update_layout(width=1080, height=1920)
+
+        frame_path = os.path.join(folder, f"frame_{frame_num:03d}.png")
+        fig.write_image(frame_path, width=1080, height=1920, scale=1)
+        print(f"✅ Saved: {frame_path}")
+
+    print(f"\n🎉 Generated {num_frames} frames in '{folder}'")
