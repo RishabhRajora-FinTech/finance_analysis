@@ -241,8 +241,12 @@ class PlotBuilderOneDay:
             ),
             autosize=False, width=1080, height=1920,
             margin=dict(l=50, r=50, b=120, t=120, pad=5),
-            paper_bgcolor="#2c3548", plot_bgcolor="#c1c9d9",
-            font=dict(color="white"), legend=dict(x=0, y=1.1, orientation="h"),
+            # paper_bgcolor="#2c3548", plot_bgcolor="#c1c9d9",
+            plot_bgcolor='white',
+            paper_bgcolor='white',
+            xaxis_gridcolor='lightgrey',
+            yaxis_gridcolor='lightgrey',
+            font=dict(color="black"), legend=dict(x=0, y=1.1, orientation="h"),
         )
 
         return fig

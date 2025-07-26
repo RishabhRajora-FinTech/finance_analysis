@@ -60,8 +60,8 @@ def create_video(folder='frames', output='investment_growth_reel.mp4', fps=10):
 #
 
 if __name__ == "__main__":
-    TICKER = "BSE.NS"
-    start_year = 2010
+    TICKER = "BHARTIARTL.NS"
+    start_year = 2020
     ticker = TICKER
     simulator = InvestmentSimulator(ticker, start_year, daily_investment=100.0)
     simulator.simulate()
