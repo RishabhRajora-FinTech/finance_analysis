@@ -84,10 +84,10 @@ if __name__ == "__main__":
     
     print(f"📊 Company: {stock_name}")
 
-    # print("🎨 Generating frames...")
-    # generate_frames(df, stock_name=stock_name, ticker=TICKER, start_year=start_year)
+    print("🎨 Generating frames...")
+    generate_frames(df, stock_name=stock_name, ticker=TICKER, start_year=start_year)
 
-    # print("🎞 Creating video...")
-    # create_video()
+    print("🎞 Creating video...")
+    create_video()
 
-    # print("✅ Done! Your Instagram Reel is ready.")
+    print("✅ Done! Your Instagram Reel is ready.")
