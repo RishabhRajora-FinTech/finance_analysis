@@ -15,7 +15,7 @@ def generate_frames(
     ticker: str,
     start_year: int,
     folder: str = "frames",
-    num_frames: int = 100,
+    num_frames: int = 200,
 ):
     # 1. Clean output folder
     if os.path.exists(folder):
@@ -60,8 +60,8 @@ def create_video(folder='frames', output='investment_growth_reel.mp4', fps=10):
 #
 
 if __name__ == "__main__":
-    TICKER = "BHARTIARTL.NS"
-    start_year = 2020
+    TICKER = "MARUTI.NS"
+    start_year = 2005
     ticker = TICKER
     simulator = InvestmentSimulator(ticker, start_year, daily_investment=100.0)
     simulator.simulate()
