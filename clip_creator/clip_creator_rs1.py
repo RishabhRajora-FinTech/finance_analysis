@@ -74,13 +74,20 @@ if __name__ == "__main__":
     # fig = plotter.create_plot()
     # Metrics
     # Display results in terminal (or can be adapted for GUI)
+    returns = final_value - total_invested
+    print(f"📈 Final Value: ₹{final_value:,.2f}")
+    print(f"💰 Total Invested: ₹{total_invested:,.2f}")
+    print(f"📊 CAGR: {cagr:.2%}")
+    print(f"📉 Total Returns: ₹{returns:,.2f}")
+    percentage_return = (returns / total_invested) * 100
+    print(f"📈 Percentage Return: {percentage_return:.2f}%")
     
     print(f"📊 Company: {stock_name}")
 
-    print("🎨 Generating frames...")
-    generate_frames(df, stock_name=stock_name, ticker=TICKER, start_year=start_year)
+    # print("🎨 Generating frames...")
+    # generate_frames(df, stock_name=stock_name, ticker=TICKER, start_year=start_year)
 
-    print("🎞 Creating video...")
-    create_video()
+    # print("🎞 Creating video...")
+    # create_video()
 
-    print("✅ Done! Your Instagram Reel is ready.")
+    # print("✅ Done! Your Instagram Reel is ready.")
