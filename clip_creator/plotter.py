@@ -112,11 +112,16 @@ import plotly.graph_objects as go
 class PlotBuilderOneDay:
     REQUIRED_COLS = ("Portfolio Value", "Total Invested")
 
-    def __init__(self, df: pd.DataFrame, ticker: str, start_year: int, name: str = None):
+    def __init__(self, df: pd.DataFrame, ticker: str, start_year: int, 
+                 name: str = None, daily_investment: float = 100,
+                 currency: str = "INR"
+                 ):
         self.df = df.copy()
         self.ticker = ticker
         self.start_year = start_year
         self.ticker_name = name or ticker
+        self.daily_investment = daily_investment
+        self.currency = currency
 
         # ---- sanity checks ----
         missing = [c for c in self.REQUIRED_COLS if c not in self.df.columns]
@@ -236,7 +241,7 @@ class PlotBuilderOneDay:
         start_date_str = self.df["Formatted_Date"].iloc[0]
         fig.update_layout(
             title=(
-                f"₹100/day in {self.ticker_name} ({self.ticker}) since {start_date_str} "
+                f"{self.currency} {self.daily_investment}/day in {self.ticker_name} ({self.ticker}) since {start_date_str} "
                 f"(DATA from {self.start_year}) • Duration: {len(self.df)} days"
             ),
             autosize=False, width=1080, height=1920,

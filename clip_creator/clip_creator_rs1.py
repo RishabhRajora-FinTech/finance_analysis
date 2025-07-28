@@ -16,6 +16,8 @@ def generate_frames(
     start_year: int,
     folder: str = "frames",
     num_frames: int = 200,
+    daily_investment: float = 1.0,
+    currency: str = "USD"
 ):
     # 1. Clean output folder
     if os.path.exists(folder):
@@ -37,7 +39,7 @@ def generate_frames(
     # 3. Generate one image per cut point
     for frame_num, idx in enumerate(cut_points, start=1):
         df_clip = df.iloc[:idx].copy()
-        plot = PlotBuilderOneDay(df_clip, ticker=ticker, start_year=start_year, name=stock_name)
+        plot = PlotBuilderOneDay(df_clip, ticker=ticker, start_year=start_year, name=stock_name,daily_investment=daily_investment, currency=currency)
         fig = plot.create_plot()
 
         # Ensure reel dimensions
@@ -60,14 +62,19 @@ def create_video(folder='frames', output='investment_growth_reel.mp4', fps=10):
 #
 
 if __name__ == "__main__":
-    TICKER = "MARUTI.NS"
+    TICKER = "BSE.NS"
     start_year = 2005
     ticker = TICKER
-    simulator = InvestmentSimulator(ticker, start_year, daily_investment=100.0)
+    daily_investment = 100.0  # Daily investment amount
+    currency = "INR"  # Currency for the investment
+    simulator = InvestmentSimulator(ticker, start_year, daily_investment=daily_investment)
     simulator.simulate()
-    final_value, total_invested, cagr, df = simulator.get_results()
+    final_value, total_invested, cagr, df, desc = simulator.get_results()
     stock_name = simulator.get_stock_info()
-    print(df.head())
+
+    print('Description',desc)
+
+    print(df.head(15))
 
     # plotter = PlotBuilderOneDay(df, ticker, start_year, stock_name)   
 
@@ -75,19 +82,19 @@ if __name__ == "__main__":
     # Metrics
     # Display results in terminal (or can be adapted for GUI)
     returns = final_value - total_invested
-    print(f"📈 Final Value: ₹{final_value:,.2f}")
-    print(f"💰 Total Invested: ₹{total_invested:,.2f}")
-    print(f"📊 CAGR: {cagr:.2%}")
-    print(f"📉 Total Returns: ₹{returns:,.2f}")
+    print(f"📈 Final Value: {currency} {final_value:,.2f}")
+    print(f"💰 Total Invested:  {currency}{total_invested:,.2f}")
+    print(f"📊 CAGR:  {cagr:.2%}")
+    print(f"📉 Total Returns:  {currency} {returns:,.2f}")
     percentage_return = (returns / total_invested) * 100
     print(f"📈 Percentage Return: {percentage_return:.2f}%")
     
     print(f"📊 Company: {stock_name}")
 
-    print("🎨 Generating frames...")
-    generate_frames(df, stock_name=stock_name, ticker=TICKER, start_year=start_year)
+    # print("🎨 Generating frames...")
+    # generate_frames(df, stock_name=stock_name, ticker=TICKER, start_year=start_year, daily_investment=daily_investment, currency=currency)
 
-    print("🎞 Creating video...")
-    create_video()
+    # print("🎞 Creating video...")
+    # create_video()
 
-    print("✅ Done! Your Instagram Reel is ready.")
+    # print("✅ Done! Your Instagram Reel is ready.")

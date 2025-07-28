@@ -72,6 +72,8 @@ class TickerSelector:
             raise ValueError(f"Not enough tickers to choose from after exclusions. Only {len(tickers)} available.")
 
         return random.sample(tickers, n)
+    
+
 
 # Example usage
 if __name__ == "__main__":

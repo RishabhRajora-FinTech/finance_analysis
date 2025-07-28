@@ -1,7 +1,9 @@
 import yfinance as yf
 import pandas as pd
 import copy
-
+import logging
+# Configure logging
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 class InvestmentSimulator:
     def __init__(self, ticker: str, start_year: int, daily_investment: float = 1.0):
@@ -71,6 +73,29 @@ class InvestmentSimulator:
         df = self.data
         final_value = df['Portfolio Value'].iloc[-1]
         total_invested = df['Total Invested'].iloc[-1]
-        years = len(df) / 365.25
-        cagr = ((final_value / total_invested) ** (1 / years) - 1) * 100
-        return final_value, total_invested, cagr, df
+        years = len(df) / 365.4  # Approximate number of years based on daily data
+        logging.info(f"Final value: {final_value}, Total invested: {total_invested}, Years: {years}")
+        cagr = ((((final_value / total_invested) ** (1 / years)) - 1)) 
+        logging.info(f"CAGR: {cagr:.6f}")       # Decimal format
+        logging.info(f"CAGR (%): {cagr*100:.2f}%")  # Percent format
+
+        desc = self.description()
+        return final_value, total_invested, cagr, df, desc
+    
+    def description(self):
+        df = self.data
+        desc = {
+            "ticker": self.ticker,
+            "start_year": self.start_year,
+            "daily_investment": self.daily_investment,
+            "data_available": self.data is not None,
+            "data_length": len(df),
+            "start_date": df.index.min() if not df.empty else None,
+            "end_date": df.index.max() if not df.empty else None,
+            "final_value": df['Portfolio Value'].iloc[-1] if not df.empty else None,
+            "total_invested": df['Total Invested'].iloc[-1] if not df.empty else None,
+            "Duration": len(df) / 365.4,  # Approximate number of years based on daily data
+            "cagr": ((((df['Portfolio Value'].iloc[-1] / df['Total Invested'].iloc[-1]) ** (1 / (len(df) / 252))) - 1)) * 100 if not df.empty else None
+        }
+        return desc
+        
