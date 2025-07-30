@@ -108,10 +108,10 @@ if __name__ == "__main__":
     save_financial_summary(f"summary{TICKER}.txt", f"{currency}", final_value, total_invested, cagr, returns, stock_name, desc)
 
 
-    # print("🎨 Generating frames...")
-    # generate_frames(df, stock_name=stock_name, ticker=TICKER, start_year=start_year, daily_investment=daily_investment, currency=currency)
+    print("🎨 Generating frames...")
+    generate_frames(df, stock_name=stock_name, ticker=TICKER, start_year=start_year, daily_investment=daily_investment, currency=currency)
 
-    # print("🎞 Creating video...")
-    # create_video()
+    print("🎞 Creating video...")
+    create_video()
 
-    # print("✅ Done! Your Instagram Reel is ready.")
+    print("✅ Done! Your Instagram Reel is ready.")

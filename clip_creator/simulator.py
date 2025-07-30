@@ -5,6 +5,7 @@ import logging
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
+
 class InvestmentSimulator:
     def __init__(self, ticker: str, start_year: int, daily_investment: float = 1.0):
         self.ticker = ticker.upper()
