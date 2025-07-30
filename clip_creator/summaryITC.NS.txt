@@ -1,0 +1,7 @@
+📈 Final Value: INR 3,648,312.75
+💰 Total Invested: INR 751,400.00
+📊 CAGR: 7.99%
+📉 Total Returns: INR 2,896,912.75
+📈 Percentage Return: 385.54%
+📊 Company: ITC Limited
+Description: {'ticker': 'ITC.NS', 'start_year': 2005, 'daily_investment': 100.0, 'data_available': True, 'data_length': 7514, 'start_date': Timestamp('2005-01-03 00:00:00'), 'end_date': Timestamp('2025-07-30 00:00:00'), 'final_value': np.float64(3648312.7546445206), 'total_invested': np.float64(751400.0), 'Duration': 20.56376573617953, 'cagr': np.float64(5.44210361006372)}

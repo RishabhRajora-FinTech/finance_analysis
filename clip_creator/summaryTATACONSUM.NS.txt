@@ -1,0 +1,7 @@
+📈 Final Value: INR 6,992,811.83
+💰 Total Invested: INR 751,300.00
+📊 CAGR: 11.46%
+📉 Total Returns: INR 6,241,511.83
+📈 Percentage Return: 830.76%
+📊 Company: Tata Consumer Products Limited
+Description: {'ticker': 'TATACONSUM.NS', 'start_year': 2005, 'daily_investment': 100.0, 'data_available': True, 'data_length': 7513, 'start_date': Timestamp('2005-01-03 00:00:00'), 'end_date': Timestamp('2025-07-29 00:00:00'), 'final_value': np.float64(6992811.832972862), 'total_invested': np.float64(751300.0), 'Duration': 20.56102900930487, 'cagr': np.float64(11.460281239353275)}

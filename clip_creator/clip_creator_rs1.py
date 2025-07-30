@@ -8,6 +8,21 @@ import os
 import shutil
 from moviepy import ImageSequenceClip
 
+def save_financial_summary(file_name, currency, final_value, total_invested, cagr, returns, stock_name, desc):
+    percentage_return = (returns / total_invested) * 100
+    content = (
+        f"📈 Final Value: {currency} {final_value:,.2f}\n"
+        f"💰 Total Invested: {currency} {total_invested:,.2f}\n"
+        f"📊 CAGR: {cagr:.2%}\n"
+        f"📉 Total Returns: {currency} {returns:,.2f}\n"
+        f"📈 Percentage Return: {percentage_return:.2f}%\n"
+        f"📊 Company: {stock_name}\n"
+        f"Description: {desc}\n"
+    )
+    with open(file_name, 'w', encoding='utf-8') as file:
+        file.write(content)
+    print(f"✅ Summary saved to {file_name}")
+
 
 def generate_frames(
     df: pd.DataFrame,
@@ -62,7 +77,7 @@ def create_video(folder='frames', output='investment_growth_reel.mp4', fps=10):
 #
 
 if __name__ == "__main__":
-    TICKER = "ITC.NS"
+    TICKER = "TATACONSUM.NS"
     start_year = 2005
     ticker = TICKER
     daily_investment = 100.0  # Daily investment amount
@@ -90,11 +105,13 @@ if __name__ == "__main__":
     print(f"📈 Percentage Return: {percentage_return:.2f}%")
     
     print(f"📊 Company: {stock_name}")
+    save_financial_summary(f"summary{TICKER}.txt", f"{currency}", final_value, total_invested, cagr, returns, stock_name, desc)
 
-    print("🎨 Generating frames...")
-    generate_frames(df, stock_name=stock_name, ticker=TICKER, start_year=start_year, daily_investment=daily_investment, currency=currency)
 
-    print("🎞 Creating video...")
-    create_video()
+    # print("🎨 Generating frames...")
+    # generate_frames(df, stock_name=stock_name, ticker=TICKER, start_year=start_year, daily_investment=daily_investment, currency=currency)
 
-    print("✅ Done! Your Instagram Reel is ready.")
+    # print("🎞 Creating video...")
+    # create_video()
+
+    # print("✅ Done! Your Instagram Reel is ready.")

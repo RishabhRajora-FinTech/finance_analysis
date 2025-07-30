@@ -95,7 +95,7 @@ class InvestmentSimulator:
             "final_value": df['Portfolio Value'].iloc[-1] if not df.empty else None,
             "total_invested": df['Total Invested'].iloc[-1] if not df.empty else None,
             "Duration": len(df) / 365.4,  # Approximate number of years based on daily data
-            "cagr": ((((df['Portfolio Value'].iloc[-1] / df['Total Invested'].iloc[-1]) ** (1 / (len(df) / 252))) - 1)) * 100 if not df.empty else None
+            "cagr": ((((df['Portfolio Value'].iloc[-1] / df['Total Invested'].iloc[-1]) ** (1 / (len(df) / 365.4))) - 1)) * 100 if not df.empty else None
         }
         return desc
         
