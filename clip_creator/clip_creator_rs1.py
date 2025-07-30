@@ -62,7 +62,7 @@ def create_video(folder='frames', output='investment_growth_reel.mp4', fps=10):
 #
 
 if __name__ == "__main__":
-    TICKER = "BSE.NS"
+    TICKER = "ITC.NS"
     start_year = 2005
     ticker = TICKER
     daily_investment = 100.0  # Daily investment amount
@@ -91,10 +91,10 @@ if __name__ == "__main__":
     
     print(f"📊 Company: {stock_name}")
 
-    # print("🎨 Generating frames...")
-    # generate_frames(df, stock_name=stock_name, ticker=TICKER, start_year=start_year, daily_investment=daily_investment, currency=currency)
+    print("🎨 Generating frames...")
+    generate_frames(df, stock_name=stock_name, ticker=TICKER, start_year=start_year, daily_investment=daily_investment, currency=currency)
 
-    # print("🎞 Creating video...")
-    # create_video()
+    print("🎞 Creating video...")
+    create_video()
 
-    # print("✅ Done! Your Instagram Reel is ready.")
+    print("✅ Done! Your Instagram Reel is ready.")
