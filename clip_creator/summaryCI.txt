@@ -1,0 +1,7 @@
+📈 Final Value: USD 36,118.37
+💰 Total Invested: USD 7,514.00
+📊 CAGR: 7.93%
+📉 Total Returns: USD 28,604.37
+📈 Percentage Return: 380.68%
+📊 Company: 
+Description: {'ticker': 'CI', 'start_year': 2005, 'daily_investment': 1.0, 'data_available': True, 'data_length': 7514, 'start_date': Timestamp('2005-01-03 00:00:00'), 'end_date': Timestamp('2025-07-30 00:00:00'), 'final_value': np.float64(36118.36559120524), 'total_invested': np.float64(7514.0), 'Duration': 20.56376573617953, 'cagr': np.float64(7.933975317016206)}

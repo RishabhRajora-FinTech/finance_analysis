@@ -1,0 +1,7 @@
+📈 Final Value: INR 6,385,403.54
+💰 Total Invested: INR 751,400.00
+📊 CAGR: 10.97%
+📉 Total Returns: INR 5,634,003.54
+📈 Percentage Return: 749.80%
+📊 Company: Kotak Mahindra Bank Limited
+Description: {'ticker': 'KOTAKBANK.NS', 'start_year': 2005, 'daily_investment': 100.0, 'data_available': True, 'data_length': 7514, 'start_date': Timestamp('2005-01-03 00:00:00'), 'end_date': Timestamp('2025-07-30 00:00:00'), 'final_value': np.float64(6385403.538061809), 'total_invested': np.float64(751400.0), 'Duration': 20.56376573617953, 'cagr': np.float64(10.9665218286904)}

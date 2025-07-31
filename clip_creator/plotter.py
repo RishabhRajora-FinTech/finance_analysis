@@ -169,7 +169,7 @@ class PlotBuilderOneDay:
             line=dict(color="green", width=4),
             marker=dict(size=8),
             connectgaps=True,
-            hovertemplate="%{customdata}<br>₹%{y:,.0f}<extra>Portfolio Value</extra>",
+            hovertemplate="%{customdata}<br>{self.currency}%{y:,.0f}<extra>Portfolio Value</extra>",
         ))
 
         # Total Invested line
@@ -182,7 +182,7 @@ class PlotBuilderOneDay:
             line=dict(color="red", width=4, dash="dot"),
             marker=dict(size=8),
             connectgaps=True,
-            hovertemplate="%{customdata}<br>₹%{y:,.0f}<extra>Total Invested</extra>",
+            hovertemplate="%{customdata}<br>{self.currency}%{y:,.0f}<extra>Total Invested</extra>",
         ))
         # ─── lock & relabel the x-axis ─────────────────────────────────────
             # First ensure 'Formatted_Date' exists and is correctly formatted
@@ -209,7 +209,7 @@ class PlotBuilderOneDay:
         ymax = self.df["Portfolio Value"].max() * 1.1
         fig.update_yaxes(
             range=[0, ymax],
-            title="INR",
+            title=self.currency,
             showgrid=True,
             tickfont=dict(size=12),
         )
@@ -221,7 +221,7 @@ class PlotBuilderOneDay:
 
         fig.add_annotation(
             x=self.df.index[-1], y=final_portfolio,
-            text=f"{final_date_disp}<br><b>₹{final_portfolio:,.0f}</b>",
+            text=f"{final_date_disp}<br><b>{self.currency}{final_portfolio:,.0f}</b>",
             showarrow=True, arrowhead=2, ax=-70, ay=-40,
             font=dict(color="white",size = 20), align="center",
             bordercolor="green", borderwidth=3, borderpad=8,
@@ -229,7 +229,7 @@ class PlotBuilderOneDay:
         )
         fig.add_annotation(
             x=self.df.index[-1], y=final_invested,
-            text=f"{final_date_disp}<br><b>₹{final_invested:,.0f}</b>",
+            text=f"{final_date_disp}<br><b>{self.currency }{final_invested:,.0f}</b>",
             showarrow=True, arrowhead=2, ax=-70, ay=40,
             font=dict(color="white",size = 20), align="center",
             

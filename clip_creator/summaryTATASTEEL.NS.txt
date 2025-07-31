@@ -1,0 +1,7 @@
+📈 Final Value: INR 3,598,494.76
+💰 Total Invested: INR 751,500.00
+📊 CAGR: 7.91%
+📉 Total Returns: INR 2,846,994.76
+📈 Percentage Return: 378.84%
+📊 Company: 
+Description: {'ticker': 'TATASTEEL.NS', 'start_year': 2005, 'daily_investment': 100.0, 'data_available': True, 'data_length': 7515, 'start_date': Timestamp('2005-01-03 00:00:00'), 'end_date': Timestamp('2025-07-31 00:00:00'), 'final_value': np.float64(3598494.75789351), 'total_invested': np.float64(751500.0), 'Duration': 20.56650246305419, 'cagr': np.float64(7.912760734921975)}
