@@ -38,5 +38,5 @@ class TickerLogo:
             return None
 
 # ---------------- Example usage ----------------
-logo = TickerLogo("CI")
+logo = TickerLogo("GRASIM.NS")
 logo.download_and_save_logo()

@@ -78,11 +78,11 @@ def create_video(folder='frames', output='investment_growth_reel.mp4', fps=10):
 #
 
 if __name__ == "__main__":
-    TICKER = "CI"
+    TICKER = "GRASIM.NS"
     start_year = 2005
     ticker = TICKER
-    daily_investment = 1.0  # Daily investment amount
-    currency = "USD"  # Currency for the investment
+    daily_investment = 100.0  # Daily investment amount
+    currency = "INR"  # Currency for the investment
     simulator = InvestmentSimulator(ticker, start_year, daily_investment=daily_investment)
     simulator.simulate()
     final_value, total_invested, cagr, df, desc = simulator.get_results()

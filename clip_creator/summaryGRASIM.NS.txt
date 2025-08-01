@@ -1,0 +1,7 @@
+📈 Final Value: INR 4,533,776.24
+💰 Total Invested: INR 751,600.00
+📊 CAGR: 9.13%
+📉 Total Returns: INR 3,782,176.24
+📈 Percentage Return: 503.22%
+📊 Company: Grasim Industries Limited
+Description: {'ticker': 'GRASIM.NS', 'start_year': 2005, 'daily_investment': 100.0, 'data_available': True, 'data_length': 7516, 'start_date': Timestamp('2005-01-03 00:00:00'), 'end_date': Timestamp('2025-08-01 00:00:00'), 'final_value': np.float64(4533776.241432093), 'total_invested': np.float64(751600.0), 'Duration': 20.569239189928847, 'cagr': np.float64(9.12988891216946)}
