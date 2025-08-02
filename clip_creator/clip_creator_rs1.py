@@ -24,7 +24,7 @@ def save_financial_summary(file_name, currency, final_value, total_invested, cag
         f"📉 Total Returns: {currency} {returns:,.2f}\n"
         f"📈 Percentage Return: {percentage_return:.2f}%\n"
         f"📊 Company: {stock_name}\n\n"
-        f"Description: {desc_str}\n\n"
+        f"ℹ️ Description: {desc_str}\n\n"
         f"Data Source: Yahoo Finance\n"
         f"Don't Wait, start investing today!\n"
         f"Follow us for more stock price animations\n"
