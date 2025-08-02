@@ -1,0 +1,23 @@
+📈 Final Value: INR 4,022,755.15
+💰 Total Invested: INR 751,600.00
+📊 CAGR: 8.50%
+📉 Total Returns: INR 3,271,155.15
+📈 Percentage Return: 435.23%
+📊 Company: Axis Bank Limited
+
+Description: ticker: AXISBANK.NS
+start_year: 2005
+daily_investment: 100.0
+data_available: True
+data_length: 7516
+start_date: 2005-01-03 00:00:00
+end_date: 2025-08-01 00:00:00
+final_value: 4022755.1515457937
+total_invested: 751600.0
+Duration: 20.569239189928847
+cagr: 8.497255916217327
+
+Data Source: Yahoo Finance
+Don't Wait, start investing today!
+Follow us for more stock price animations
+⚠️ Disclaimer: For informational and entertainment pusposes only. Not Financial advice. Past Performance is no guarantee of future results.

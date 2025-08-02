@@ -9,16 +9,26 @@ import shutil
 from moviepy import ImageSequenceClip
 
 
+
 def save_financial_summary(file_name, currency, final_value, total_invested, cagr, returns, stock_name, desc):
+
+    def format_dict_content(d):
+        return '\n'.join(f"{k}: {v}" for k, v in d.items())
+
     percentage_return = (returns / total_invested) * 100
+    desc_str = format_dict_content(desc) if isinstance(desc, dict) else desc
     content = (
         f"📈 Final Value: {currency} {final_value:,.2f}\n"
         f"💰 Total Invested: {currency} {total_invested:,.2f}\n"
         f"📊 CAGR: {cagr:.2%}\n"
         f"📉 Total Returns: {currency} {returns:,.2f}\n"
         f"📈 Percentage Return: {percentage_return:.2f}%\n"
-        f"📊 Company: {stock_name}\n"
-        f"Description: {desc}\n"
+        f"📊 Company: {stock_name}\n\n"
+        f"Description: {desc_str}\n\n"
+        f"Data Source: Yahoo Finance\n"
+        f"Don't Wait, start investing today!\n"
+        f"Follow us for more stock price animations\n"
+        f"⚠️ Disclaimer: For informational and entertainment pusposes only. Not Financial advice. Past Performance is no guarantee of future results.\n"
     )
     with open(file_name, 'w', encoding='utf-8') as file:
         file.write(content)
@@ -78,7 +88,7 @@ def create_video(folder='frames', output='investment_growth_reel.mp4', fps=10):
 #
 
 if __name__ == "__main__":
-    TICKER = "GRASIM.NS"
+    TICKER = "AXISBANK.NS"
     start_year = 2005
     ticker = TICKER
     daily_investment = 100.0  # Daily investment amount
