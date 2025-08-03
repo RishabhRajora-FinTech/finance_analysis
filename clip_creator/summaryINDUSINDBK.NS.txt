@@ -1,0 +1,23 @@
+📈 Final Value: INR 3,717,289.52
+💰 Total Invested: INR 751,600.00
+📊 CAGR: 8.08%
+📉 Total Returns: INR 2,965,689.52
+📈 Percentage Return: 394.58%
+📊 Company: IndusInd Bank Limited
+
+ℹ️ Description: ticker: INDUSINDBK.NS
+start_year: 2005
+daily_investment: 100.0
+data_available: True
+data_length: 7516
+start_date: 2005-01-03 00:00:00
+end_date: 2025-08-01 00:00:00
+final_value: 3717289.5186419073
+total_invested: 751600.0
+Duration: 20.569239189928847
+cagr: 8.081496968876545
+
+Data Source: Yahoo Finance
+Don't Wait, start investing today!
+Follow us for more stock price animations
+⚠️ Disclaimer: For informational and entertainment pusposes only. Not Financial advice. Past Performance is no guarantee of future results.

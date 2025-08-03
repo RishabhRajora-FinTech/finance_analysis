@@ -137,7 +137,7 @@ def create_video(folder='frames', output='investment_growth_reel.mp4', fps=10):
 #
 
 if __name__ == "__main__":
-    TICKER = "M&M.NS"
+    TICKER = "INDUSINDBK.NS"
     start_year = 2005
     ticker = TICKER
     daily_investment = 100.0  # Daily investment amount
