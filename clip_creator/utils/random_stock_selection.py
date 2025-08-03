@@ -75,11 +75,11 @@ class TickerSelector:
     
 
 
-# Example usage
-if __name__ == "__main__":
-    selector = TickerSelector(exclude_file="exclude.txt")
-    try:
-        random_tickers = selector.get_random_tickers(region="India", n=1)
-        print("Random Tickers:", random_tickers)
-    except ValueError as e:
-        print(e)
+# # Example usage
+# if __name__ == "__main__":
+#     selector = TickerSelector(exclude_file="exclude.txt")
+#     try:
+#         random_tickers = selector.get_random_tickers(region="India", n=1)
+#         print("Random Tickers:", random_tickers)
+#     except ValueError as e:
+#         print(e)

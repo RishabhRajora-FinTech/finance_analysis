@@ -7,6 +7,6 @@ try:
     print("Random Tickers:", random_tickers)
 except ValueError as e:
     print(e)
-
-logo = TickerLogo("AXISBANK.NS")
+random_tickers = random_tickers[0] +".NS"
+logo = TickerLogo(random_tickers)
 logo.download_and_save_logo()

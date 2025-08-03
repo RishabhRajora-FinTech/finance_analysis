@@ -7,6 +7,8 @@ import yfinance as yf
 import os
 import shutil
 from moviepy import ImageSequenceClip
+from concurrent.futures import ProcessPoolExecutor
+from functools import partial
 
 
 
@@ -34,6 +36,53 @@ def save_financial_summary(file_name, currency, final_value, total_invested, cag
         file.write(content)
     print(f"✅ Summary saved to {file_name}")
 
+
+def generate_single_frame(df: pd.DataFrame, idx: int, frame_num: int, folder: str, ticker: str, stock_name: str, start_year: int, daily_investment: float, currency: str):
+    df_clip = df.iloc[:idx].copy()
+    plot = PlotBuilderOneDay(df_clip, ticker=ticker, start_year=start_year, name=stock_name, daily_investment=daily_investment, currency=currency)
+    fig = plot.create_plot()
+    fig.update_layout(width=1080, height=1920)
+    frame_path = os.path.join(folder, f"frame_{frame_num:03d}.png")
+    fig.write_image(frame_path, width=1080, height=1920, scale=1)
+    print(f"✅ Saved: {frame_path}")
+    return frame_path
+
+def generate_frames_parallel(
+    df: pd.DataFrame,
+    stock_name: str,
+    ticker: str,
+    start_year: int,
+    folder: str = "frames",
+    num_frames: int = 200,
+    daily_investment: float = 1.0,
+    currency: str = "USD",
+    max_workers: int = os.cpu_count()
+):
+    # 1. Clean and create folder
+    if os.path.exists(folder):
+        shutil.rmtree(folder)
+    os.makedirs(folder)
+
+    n = len(df)
+    if n >= num_frames:
+        cut_points = np.linspace(1, n, num=num_frames, dtype=int, endpoint=True)
+    else:
+        cut_points = np.arange(1, n + 1, dtype=int)
+        pad = np.full(num_frames - n, n, dtype=int)
+        cut_points = np.concatenate([cut_points, pad])
+
+    # 2. Prepare partial function for multiprocessing
+    with ProcessPoolExecutor(max_workers=max_workers) as executor:
+        tasks = [
+            executor.submit(
+                generate_single_frame, df, idx, frame_num, folder, ticker, stock_name, start_year, daily_investment, currency
+            )
+            for frame_num, idx in enumerate(cut_points, start=1)
+        ]
+        for task in tasks:
+            task.result()  # To ensure exceptions are caught
+
+    print(f"\n🎉 Generated {len(cut_points)} frames in '{folder}'")
 
 def generate_frames(
     df: pd.DataFrame,
@@ -88,7 +137,7 @@ def create_video(folder='frames', output='investment_growth_reel.mp4', fps=10):
 #
 
 if __name__ == "__main__":
-    TICKER = "AXISBANK.NS"
+    TICKER = "M&M.NS"
     start_year = 2005
     ticker = TICKER
     daily_investment = 100.0  # Daily investment amount
@@ -120,7 +169,7 @@ if __name__ == "__main__":
 
 
     print("🎨 Generating frames...")
-    generate_frames(df, stock_name=stock_name, ticker=TICKER, start_year=start_year, daily_investment=daily_investment, currency=currency)
+    generate_frames_parallel(df, stock_name=stock_name, ticker=TICKER, start_year=start_year, daily_investment=daily_investment, currency=currency)
 
     print("🎞 Creating video...")
     create_video()

@@ -37,6 +37,6 @@ class TickerLogo:
             print(f"⚠️ Error for {self.ticker}: {e}")
             return None
 
-# ---------------- Example usage ----------------
-logo = TickerLogo("GRASIM.NS")
-logo.download_and_save_logo()
+# # ---------------- Example usage ----------------
+# logo = TickerLogo("GRASIM.NS")
+# logo.download_and_save_logo()

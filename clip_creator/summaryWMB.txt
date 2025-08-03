@@ -1,0 +1,23 @@
+📈 Final Value: USD 33,282.75
+💰 Total Invested: USD 7,516.00
+📊 CAGR: 7.50%
+📉 Total Returns: USD 25,766.75
+📈 Percentage Return: 342.83%
+📊 Company: The Williams Companies, Inc.
+
+ℹ️ Description: ticker: WMB
+start_year: 2005
+daily_investment: 1.0
+data_available: True
+data_length: 7516
+start_date: 2005-01-03 00:00:00
+end_date: 2025-08-01 00:00:00
+final_value: 33282.74976938464
+total_invested: 7516.0
+Duration: 20.569239189928847
+cagr: 7.502216840897846
+
+Data Source: Yahoo Finance
+Don't Wait, start investing today!
+Follow us for more stock price animations
+⚠️ Disclaimer: For informational and entertainment pusposes only. Not Financial advice. Past Performance is no guarantee of future results.

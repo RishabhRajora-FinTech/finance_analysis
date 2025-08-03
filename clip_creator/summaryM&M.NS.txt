@@ -1,0 +1,23 @@
+📈 Final Value: INR 9,026,788.53
+💰 Total Invested: INR 751,600.00
+📊 CAGR: 12.85%
+📉 Total Returns: INR 8,275,188.53
+📈 Percentage Return: 1101.01%
+📊 Company: Mahindra & Mahindra Limited
+
+ℹ️ Description: ticker: M&M.NS
+start_year: 2005
+daily_investment: 100.0
+data_available: True
+data_length: 7516
+start_date: 2005-01-03 00:00:00
+end_date: 2025-08-01 00:00:00
+final_value: 9026788.533973834
+total_invested: 751600.0
+Duration: 20.569239189928847
+cagr: 12.845316890300772
+
+Data Source: Yahoo Finance
+Don't Wait, start investing today!
+Follow us for more stock price animations
+⚠️ Disclaimer: For informational and entertainment pusposes only. Not Financial advice. Past Performance is no guarantee of future results.
