@@ -31,6 +31,7 @@ def save_financial_summary(file_name, currency, final_value, total_invested, cag
         f"Don't Wait, start investing today!\n"
         f"Follow us for more stock price animations\n"
         f"⚠️ Disclaimer: For informational and entertainment pusposes only. Not Financial advice. Past Performance is no guarantee of future results.\n"
+        f"#finance #fintech #returns #risk #markets #trends"
     )
     with open(file_name, 'w', encoding='utf-8') as file:
         file.write(content)

@@ -1,0 +1,23 @@
+📈 Final Value: INR 48,877,051.87
+💰 Total Invested: INR 751,900.00
+📊 CAGR: 22.49%
+📉 Total Returns: INR 48,125,151.87
+📈 Percentage Return: 6400.47%
+📊 Company: Eicher Motors Limited
+
+ℹ️ Description: ticker: EICHERMOT.NS
+start_year: 2005
+daily_investment: 100.0
+data_available: True
+data_length: 7519
+start_date: 2005-01-03 00:00:00
+end_date: 2025-08-04 00:00:00
+final_value: 48877051.86618605
+total_invested: 751900.0
+Duration: 20.57744937055282
+cagr: 22.490802773095343
+
+Data Source: Yahoo Finance
+Don't Wait, start investing today!
+Follow us for more stock price animations
+⚠️ Disclaimer: For informational and entertainment pusposes only. Not Financial advice. Past Performance is no guarantee of future results.
