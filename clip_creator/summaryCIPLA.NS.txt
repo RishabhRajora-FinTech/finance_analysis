@@ -1,0 +1,25 @@
+📈 Final Value: INR 3,223,673.87
+💰 Total Invested: INR 752,100.00
+📊 CAGR: 7.33%
+📉 Total Returns: INR 2,471,573.87
+📈 Percentage Return: 328.62%
+📊 Company: Cipla Limited
+
+🧮 Average Returns: 50.44% & Standard Deviation: 672.11%
+ℹ️ Description: ticker: CIPLA.NS
+start_year: 2005
+daily_investment: 100.0
+data_available: True
+data_length: 7521
+start_date: 2005-01-03 00:00:00
+end_date: 2025-08-06 00:00:00
+final_value: 3223673.8741607596
+total_invested: 752100.0
+Duration: 20.582922824302138
+cagr: 7.326936805516393
+
+Data Source: Yahoo Finance
+Don't Wait, start investing today!
+Follow us for more stock price animations
+⚠️ Disclaimer: For informational and entertainment pusposes only. Not Financial advice. Past Performance is no guarantee of future results.
+#finance #fintech #returns #risk #markets #trends

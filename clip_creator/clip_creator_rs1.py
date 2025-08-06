@@ -12,7 +12,7 @@ from functools import partial
 
 
 
-def save_financial_summary(file_name, currency, final_value, total_invested, cagr, returns, stock_name, desc):
+def save_financial_summary(file_name, currency, final_value, total_invested, cagr, returns, stock_name, desc, mean, stdev):
 
     def format_dict_content(d):
         return '\n'.join(f"{k}: {v}" for k, v in d.items())
@@ -26,6 +26,7 @@ def save_financial_summary(file_name, currency, final_value, total_invested, cag
         f"📉 Total Returns: {currency} {returns:,.2f}\n"
         f"📈 Percentage Return: {percentage_return:.2f}%\n"
         f"📊 Company: {stock_name}\n\n"
+        f"🧮  Average Annualized Log Return: {mean:.2%} & Annualized Standard Deviation: {stdev:.2%}\n"
         f"ℹ️ Description: {desc_str}\n\n"
         f"Data Source: Yahoo Finance\n"
         f"Don't Wait, start investing today!\n"
@@ -138,7 +139,7 @@ def create_video(folder='frames', output='investment_growth_reel.mp4', fps=10):
 #
 
 if __name__ == "__main__":
-    TICKER = "INDUSINDBK.NS"
+    TICKER = "IDEA.NS"
     start_year = 2005
     ticker = TICKER
     daily_investment = 100.0  # Daily investment amount
@@ -147,6 +148,7 @@ if __name__ == "__main__":
     simulator.simulate()
     final_value, total_invested, cagr, df, desc = simulator.get_results()
     stock_name = simulator.get_stock_info()
+    mean, stdev, len_df_price = simulator.stats()
 
     print('Description',desc)
 
@@ -164,9 +166,9 @@ if __name__ == "__main__":
     print(f"📉 Total Returns:  {currency} {returns:,.2f}")
     percentage_return = (returns / total_invested) * 100
     print(f"📈 Percentage Return: {percentage_return:.2f}%")
-    
+    print(f"Price Avaiable dates len: {len_df_price}")
     print(f"📊 Company: {stock_name}")
-    save_financial_summary(f"summary{TICKER}.txt", f"{currency}", final_value, total_invested, cagr, returns, stock_name, desc)
+    save_financial_summary(f"summary{TICKER}.txt", f"{currency}", final_value, total_invested, cagr, returns, stock_name, desc, mean,stdev)
 
 
     print("🎨 Generating frames...")

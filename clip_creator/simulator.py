@@ -1,6 +1,7 @@
 import yfinance as yf
 import pandas as pd
 import copy
+import numpy as np 
 import logging
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -67,6 +68,19 @@ class InvestmentSimulator:
         # Step 8: Save back
         self.data = df
 
+    def stats(self):
+        """
+        Calculate and return mean and standard deviation of log returns.
+        """
+        if self.data is None:
+            self.simulate()
+        df = self.data
+        # Calculate log returns
+        df['log_return'] = np.log(df['Portfolio Value'] / df['Portfolio Value'].shift(1))
+        log_return_mean = df['log_return'].mean() * 365.4
+        log_return_std = df['log_return'].std() * (365.4 ** 0.5)
+        len_df = len(df)
+        return log_return_mean, log_return_std, len_df
 
     def get_results(self):
         if self.data is None:

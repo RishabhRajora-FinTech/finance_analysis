@@ -1,0 +1,25 @@
+📈 Final Value: INR 247,347.79
+💰 Total Invested: INR 672,600.00
+📊 CAGR: -5.29%
+📉 Total Returns: INR -425,252.21
+📈 Percentage Return: -63.23%
+📊 Company: Vodafone Idea Limited
+
+🧮  Average Annualized Log Return: 42.45% & Annualized Standard Deviation: 61.93%
+ℹ️ Description: ticker: IDEA.NS
+start_year: 2005
+daily_investment: 100.0
+data_available: True
+data_length: 6726
+start_date: 2007-03-09 00:00:00
+end_date: 2025-08-06 00:00:00
+final_value: 247347.78876193234
+total_invested: 672600.0
+Duration: 18.407224958949097
+cagr: -5.289546069304829
+
+Data Source: Yahoo Finance
+Don't Wait, start investing today!
+Follow us for more stock price animations
+⚠️ Disclaimer: For informational and entertainment pusposes only. Not Financial advice. Past Performance is no guarantee of future results.
+#finance #fintech #returns #risk #markets #trends

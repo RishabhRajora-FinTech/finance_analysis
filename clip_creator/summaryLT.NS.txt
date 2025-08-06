@@ -1,0 +1,24 @@
+📈 Final Value: INR 5,109,747.10
+💰 Total Invested: INR 752,000.00
+📊 CAGR: 9.76%
+📉 Total Returns: INR 4,357,747.10
+📈 Percentage Return: 579.49%
+📊 Company: Larsen & Toubro Limited
+
+ℹ️ Description: ticker: LT.NS
+start_year: 2005
+daily_investment: 100.0
+data_available: True
+data_length: 7520
+start_date: 2005-01-03 00:00:00
+end_date: 2025-08-05 00:00:00
+final_value: 5109747.096442296
+total_invested: 752000.0
+Duration: 20.58018609742748
+cagr: 9.757967549755042
+
+Data Source: Yahoo Finance
+Don't Wait, start investing today!
+Follow us for more stock price animations
+⚠️ Disclaimer: For informational and entertainment pusposes only. Not Financial advice. Past Performance is no guarantee of future results.
+#finance #fintech #returns #risk #markets #trends

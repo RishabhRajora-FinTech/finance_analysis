@@ -1,0 +1,23 @@
+📈 Final Value: INR 1,428,213.96
+💰 Total Invested: INR 538,900.00
+📊 CAGR: 6.83%
+📉 Total Returns: INR 889,313.96
+📈 Percentage Return: 165.02%
+📊 Company: Coal India Limited
+
+ℹ️ Description: ticker: COALINDIA.NS
+daily_investment: 100.0
+data_available: True
+data_length: 5389
+start_date: 2010-11-04 00:00:00
+end_date: 2025-08-05 00:00:00
+final_value: 1428213.9568682865
+total_invested: 538900.0
+Duration: 14.748221127531473
+cagr: 6.831851581785675
+
+Data Source: Yahoo Finance
+Don't Wait, start investing today!
+Follow us for more stock price animations
+⚠️ Disclaimer: For informational and entertainment pusposes only. Not Financial advice. Past Performance is no guarantee of future results.
+#finance #fintech #returns #risk #markets #trends

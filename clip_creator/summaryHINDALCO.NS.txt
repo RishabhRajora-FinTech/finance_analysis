@@ -1,0 +1,24 @@
+📈 Final Value: INR 3,571,755.69
+💰 Total Invested: INR 752,000.00
+📊 CAGR: 7.86%
+📉 Total Returns: INR 2,819,755.69
+📈 Percentage Return: 374.97%
+📊 Company: Hindalco Industries Limited
+
+ℹ️ Description: ticker: HINDALCO.NS
+start_year: 2005
+daily_investment: 100.0
+data_available: True
+data_length: 7520
+start_date: 2005-01-03 00:00:00
+end_date: 2025-08-05 00:00:00
+final_value: 3571755.6929676607
+total_invested: 752000.0
+Duration: 20.58018609742748
+cagr: 7.864711713871575
+
+Data Source: Yahoo Finance
+Don't Wait, start investing today!
+Follow us for more stock price animations
+⚠️ Disclaimer: For informational and entertainment pusposes only. Not Financial advice. Past Performance is no guarantee of future results.
+#finance #fintech #returns #risk #markets #trends
