@@ -1,22 +1,22 @@
-📈 Final Value: USD 8,201.75
-💰 Total Invested: USD 7,522.00
-📊 CAGR: 0.42%
-📉 Total Returns: USD 679.75
-📈 Percentage Return: 9.04%
+📈 Final Value: USD 8,098.60
+💰 Total Invested: USD 7,523.00
+📊 CAGR: 0.36%
+📉 Total Returns: USD 575.60
+📈 Percentage Return: 7.65%
 📊 Company: American Eagle Outfitters, Inc.
 
-🧮  Average Annualized Log Return: 43.78% & Annualized Standard Deviation: 50.92%
+🧮  Average Annualized Log Return: 43.72% & Annualized Standard Deviation: 50.92%
 ℹ️ Description: ticker: AEO
 start_year: 2005
 daily_investment: 1.0
 data_available: True
-data_length: 7522
+data_length: 7523
 start_date: 2005-01-03 00:00:00
-end_date: 2025-08-07 00:00:00
-final_value: 8201.753246955923
-total_invested: 7522.0
-Duration: 20.585659551176793
-cagr: 0.4211569611115351
+end_date: 2025-08-08 00:00:00
+final_value: 8098.6035203714
+total_invested: 7523.0
+Duration: 20.58839627805145
+cagr: 0.35873999560636083
 
 Data Source: Yahoo Finance
 Don't Wait, start investing today!
