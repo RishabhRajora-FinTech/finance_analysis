@@ -1,0 +1,25 @@
+📈 Final Value: INR 2,479,790.92
+💰 Total Invested: INR 752,300.00
+📊 CAGR: 5.96%
+📉 Total Returns: INR 1,727,490.92
+📈 Percentage Return: 229.63%
+📊 Company: Nestlé India Limited
+
+🧮  Average Annualized Log Return: 49.15% & Annualized Standard Deviation: 43.15%
+ℹ️ Description: ticker: NESTLEIND.NS
+start_year: 2005
+daily_investment: 100.0
+data_available: True
+data_length: 7523
+start_date: 2005-01-03 00:00:00
+end_date: 2025-08-08 00:00:00
+final_value: 2479790.916648089
+total_invested: 752300.0
+Duration: 20.58839627805145
+cagr: 5.964640515204489
+
+Data Source: Yahoo Finance
+Don't Wait, start investing today!
+Follow us for more stock price animations
+⚠️ Disclaimer: For informational and entertainment pusposes only. Not Financial advice. Past Performance is no guarantee of future results.
+#finance #fintech #returns #risk #markets #trends
