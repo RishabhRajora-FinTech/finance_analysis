@@ -1,0 +1,25 @@
+📈 Final Value: USD 31,650.61
+💰 Total Invested: USD 7,520.00
+📊 CAGR: 7.23%
+📉 Total Returns: USD 24,130.61
+📈 Percentage Return: 320.89%
+📊 Company: Aflac Incorporated
+
+🧮  Average Annualized Log Return: 50.36% & Annualized Standard Deviation: 41.71%
+ℹ️ Description: ticker: AFL
+start_year: 2005
+daily_investment: 1.0
+data_available: True
+data_length: 7520
+start_date: 2005-01-03 00:00:00
+end_date: 2025-08-05 00:00:00
+final_value: 31650.60626770222
+total_invested: 7520.0
+Duration: 20.58018609742748
+cagr: 7.232987048425699
+
+Data Source: Yahoo Finance
+Don't Wait, start investing today!
+Follow us for more stock price animations
+⚠️ Disclaimer: For informational and entertainment pusposes only. Not Financial advice. Past Performance is no guarantee of future results.
+#finance #fintech #returns #risk #markets #trends

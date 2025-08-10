@@ -62,7 +62,7 @@ class TickerSelector:
             tickers = self._get_europe_tickers()
         else:
             raise ValueError(f"Unknown region: {region}")
-        logging.info(f"Ticker List for exclude tickers, {excluded_tickers}")
+        logging.info(f"Ticker List for exclude tickers, {self.excluded_tickers}")
                 # Filter out excluded tickers
         tickers = [
             ticker for ticker in tickers

@@ -1,22 +1,22 @@
-📈 Final Value: INR 3,230,402.54
+📈 Final Value: INR 49,294,113.70
 💰 Total Invested: INR 752,100.00
-📊 CAGR: 7.34%
-📉 Total Returns: INR 2,478,302.54
-📈 Percentage Return: 329.52%
-📊 Company: Cipla Limited
+📊 CAGR: 22.53%
+📉 Total Returns: INR 48,542,013.70
+📈 Percentage Return: 6454.20%
+📊 Company: Eicher Motors Limited
 
-🧮  Average Annualized Log Return: 50.45% & Annualized Standard Deviation: 35.16%
-ℹ️ Description: ticker: CIPLA.NS
+🧮  Average Annualized Log Return: 63.69% & Annualized Standard Deviation: 83.83%
+ℹ️ Description: ticker: EICHERMOT.NS
 start_year: 2005
 daily_investment: 100.0
 data_available: True
 data_length: 7521
 start_date: 2005-01-03 00:00:00
 end_date: 2025-08-06 00:00:00
-final_value: 3230402.5371402977
+final_value: 49294113.701105215
 total_invested: 752100.0
 Duration: 20.582922824302138
-cagr: 7.337809783604365
+cagr: 22.533183898468124
 
 Data Source: Yahoo Finance
 Don't Wait, start investing today!
